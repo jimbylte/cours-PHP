@@ -79,24 +79,36 @@
 
 
 //-------------------------------------------
-echo "<p>Afficher uniquement les valeurs d'un tableau</p>";
+
 
 ?>
+<h2>Parcourir les tableaux grâce aux boucles</h2><br>
+
+<h3>La boucle FOR</h3>
+<p>La boucle FOR va permettre de parcourir un "array", et extraire les données pour les afficher sous la forme demandée.</p>
+<p>Afficher uniquement les valeurs d'un tableau</p>
+<br>
 <code>
 $listeFournitures = array('stylos', 'crayons de papier', 'surligneurs', 'feutres', 'règles');<br><br>
+</code>
 
+<p>Afficher uniquement les valeurs d'un tableau</p>
+
+<code>
    for ($j = 0; $j < count($listeFournitures); $j++){
     echo "$listeFournitures[$j]";
    }<br>
 </code>
+
 <?php
+
 $listeFournitures = array('stylos', 'crayons de papier', 'surligneurs', 'feutres', 'règles');
 
    for ($j = 0; $j < count($listeFournitures); $j++){
     echo "$listeFournitures[$j] <br>";
    }
    echo "<br>";
-   echo "<p>On utilise la fonction COUNT() pour obtenir la taille du tableau</p>";
+   echo "<p>On utilise la fonction COUNT() ou la fonction SIZEOF() pour obtenir la taille du tableau</p>";
    ?>   
 <code>
 count($listeFournitures);
@@ -106,6 +118,15 @@ count($listeFournitures);
     echo "<br>";
     echo count($listeFournitures) ."<br>"; // la taille du tableau
     echo "<br>";
+    ?>
+    <code>
+    sizeof($listeFournitures);
+    </code>
+    <?php
+    echo "<br>";
+    echo sizeof($listeFournitures) ."<br>"; // la taille du tableau
+    echo "<br>";
+
     echo "<p>La boucle suivante fera apparaître les valeurs du tableau </p>";
 ?>
    <code> for($j = 0; $j < count($listeFournitures); $j++){
@@ -189,6 +210,164 @@ for($t=0;$t<count($tabMultidimentionnel);$t++){
     echo"</pre>";
 }
         ?>
+
+        <h3>La boucle FOREACH</h3>
+        <p>
+            La boucle FOREACH est plus adaptée lorsque l'on parcoure un tableau, mais c'est aussi la plus complexe à comprendre. ELle vient avec ses "mots" et "symboles" "clefs" que nous verrons après l'exemple. C'est la boucle la plus adaptée aux tableaux car on est pas obligé de fournir un numéro pour l'index.
+        </p>
+<!-- afin de créer l'aperçu on peut remplacer les symbole "<" et ">" par leur code correspondants "&lt;" et "&gt;", ce sont les entités HTML "HTML entities" -->
+        <ul>
+            <code>
+            <pre>
+            &lt;?php
+            foreach($listeFournitures as $indiceTableau => $objetTableau)
+            {
+                echo "&lt;li&gt;$indiceTableau - $objetTableau&lt;/li&gt;";
+            }
+
+            ?&gt;
+            </pre>
+            </code>
+        
+        </ul>
+
+        <ul>
+            <?php
+            foreach($listeFournitures as $indiceTableau => $objetTableau)
+            {
+                echo "<li>$indiceTableau - $objetTableau</li>";
+            }
+
+            ?>
+        </ul>
+
+        <p>La boucle foreach s'écrit toujours de la même façon. Entre les parenthèses, nous retrouverons d'abord le nom de la variable contenant un tableau. Vient ensuite le mot clé <code>as</code>, prédéfinit dans le langage PHP. Il précède la variable qui va contenir l'index du tableau. On peut donner le nom que l'on veut aux deux variables suivantes ($indiceTableau et $objetTableau), elles pourraient très bien s'appeler "piscine" et "chlore", ou encore "index" et "valeur". C'est leur emplacement qui indique à quoi elles servent. Entre ces deux variables on retrouve la flèche <code>=></code> qui, comme on l'a déjà vu, signifie "correspond à". </p>
+        <p>En résumé, dans la parenthèse de la boucle foreach je trouverai : <code>$variableTableau as $indexTableau => $valeurTableau</code>.</p>
+
+        <h2>
+            Les tableaux associatifs
+        </h2>
+        <p>
+            Il est possible, lorsque l'on crée un tableau de choisir les index plutôt que de les avoir définis automatiquement. On parlera alors de tableau associatif.
+        </p>
+            <code>
+            $listeCouleur =["j" => "jaune",
+                            "b" => "bleu",
+                            "v" => "vert"
+                            ];
+            </code>
+            <code>
+        echo "<p>Ma couleur préférée est le :" .  $listeCouleur["j"] . "</p>";                     
+        </code>
+        <?php
+            $listeCouleur =["j" => "jaune",
+                            "b" => "bleu",
+                            "v" => "vert"
+                            ];
+        
+        // Aficher "ma couleur préférée est le jaune
+        echo "<p>Ma couleur préférée est le :" .  $listeCouleur["j"] . "</p>";  
+              
+        //Même chose que précédemment sauf que l'index de mon tableau est la lettre "j"
+        ?>
+        <p>
+            Avec un tableau associatif, nous utiliseronts tjrs les crochets mais c'est l'index que nous avons déclaré qui prendra le pas.
+        </p>
+
+        <h2>
+            Les tableaux multidimentionnels
+        </h2>
+        <p>
+            Il est possible de créer des tableaux à l'intérieur d'autres tableaux grâce à l'imbrication :
+            C'est alors un tableau multidimentionnel.
+        </p>
+       <code> <pre>
+        $tabMulti = array(
+            0 => ['prénom' => 'Hassan',
+                    'nom' => 'akhtar'],
+            1 => ['prénom' => 'Ophélia',
+                    'nom' => 'Loron'],
+            2 => ['prénom' => 'Souleiman',
+                    'nom' => 'Hunault'],
+            3 => ['prénom' => 'Aurélie',
+                    'nom' => 'Driss']     
+        );
+        </pre></code>
+        
+        <?php //tableau multidimentionnels
+        $tabMulti = array(
+            0 => ['prenom' => 'Hassan',
+                    'nom' => 'akhtar'],
+            1 => ['prenom' => 'Ophélia',
+                    'nom' => 'Loron'],
+            2 => ['prenom' => 'Souleiman',
+                    'nom' => 'Hunault'],
+            3 => ['prenom' => 'Aurélie',
+                    'nom' => 'Driss']     
+        );
+        echo "<br><br>";
+        echo "<pre>";
+        print_r($tabMulti);
+        echo "</pre>";
+            
+        // Afficher "Bonjour Mme Driss"
+?>
+    <p>Afficher "Bonjour Mme. Driss</p>
+    <code>
+    echo "&lt;pre&gt;";<br>
+    echo "&lt;p&gt;Bonjour Mme. " . $tabMulti[3]["nom"] . "&lt;/p&gt;";<br>
+    echo "&lt;/pre&gt;";</code><br><br>
+<?php
+        echo "<p>Bonjour Mme. " . $tabMulti[3]["nom"] . "</p>";
+
+        // Afficher le tableau à l'aide de la boucle FOR
+?>
+<p>Afficher le tableau à l'aide de la boucle FOR</p>
+    <code><pre>
+    for($i = 0; $i < count($tabMulti); $i++){
+    echo "&lt;pre&gt;"; 
+    var_dump($tabMulti[$i]);
+    echo "&lt;/pre&gt;";<br>    };
+    </pre></code>
+<?php
+        for($i = 0; $i < count($tabMulti); $i++)
+        {
+            echo "<pre>";
+            var_dump($tabMulti[$i]);
+            echo "</pre>";
+        }
+        echo "<ul>";
+        foreach($tabMulti as $indiceTabMulti => $objetTabMulti)
+            {
+                echo "<li>$indiceTabMulti - $objetTabMulti[prenom] $objetTabMulti[nom]</li>";
+                // echo "<li>".$indiceTabMulti ." - ".$objetTabMulti["prenom"]." ". $objetTabMulti["nom"]."</li>";
+                // echo "<li>{$indiceTabMulti} - {$objetTabMulti["prenom"]} {$objetTabMulti["nom"]}</li>";
+                // `Hello, my name is ${name}`
+            }
+         echo "</ul>";
+
+        ?>
+        <!--correction----------------------------------->
+        <p>correction</p>
+        
+              
+                <ul>
+                    <code>
+                    <?php
+                    foreach($tabMulti as $index => $personnes)
+                    {
+                        echo "<li>";
+                        echo $index . "=>";
+                        
+                        foreach($personnes as $champ => $valeurChamp)
+                        {
+                            echo   "$champ : $valeurChamp ,";
+                        } 
+                        echo "</li>";
+                    }
+                    ?></code>
+                </ul>
+            
         
     </main>
 

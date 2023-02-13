@@ -74,7 +74,8 @@
                     echo "<p>Tour n°$b</p>";
                     // $b++;
                 }
-                ?>
+                
+                
                 //1-$b = 0;
                 //2-test(condition) => 0 < 15 ? VRAI
                 //3-affichage $b => $b =>0;
@@ -82,6 +83,14 @@
                 //2-Test(condition)
                 //3-affichage
                 //Incrémentation
+                ?>
+
+                <h2>La boucle foreach</h2>
+                <p>La boucle foreach sert à parcourir un tableau (array() ou []). On verra cette boucle plus en détails dans la page dédiée aux array(). </p>
+
+                <p class="alert alert-danger">Attention. Lorsque que vous faites une boucle, vérifiez votre condition de sortie ainsi que l'incrémentation de votre variable. Sans incrémentation, vous aurez une boucle infinie.</p>
+
+                <p class="alert alert-secondary">A force d'utilier les boucles, il sera de plus en plus logique de choisir telle ou telle boucle pour tel ou tel usage. </p>
             </div>
         </section>
     </main>
