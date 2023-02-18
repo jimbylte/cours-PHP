@@ -11,6 +11,19 @@
         <section class="container-fluid py-5">
             <h1 class="display-5 fw-bold">Les Array</h1>
             <p class="col-md-8 fs-4">Les tableaux, appelés array() dans les langages de programmation sont extrêmement importants car ils permettent de garder en mémoire plusieurs valeurs</p>
+
+            <nav class="navbar navbar-expand-lg bg-tertiary">
+                <a class="nav-link m-2" aria-current="page" href="01-index.html">introduction</a>
+                <a class="nav-link m-2" href="03-variable.html">variables</a>
+                <a class="nav-link m-2" href="05-boucles.php">boucles</a>
+                <a class="nav-link active m-2" aria-current="page" href="06-array.php">array</a>
+                <a class="nav-link m-2" href="08-inclusion.php">inclusion</a>
+                <a class="nav-link m-2" href="09-get_post.php">Les superglobales</a>
+                <a class="nav-link m-2" href="10-pdo.php">Le PHP Data Object (PDO)</a>
+                <a class="nav-link m-2" href="session.php">Session de connection</a>
+                <a class="nav-link m-2" href="07-exercices.php">exercices</a>
+            </nav>
+
         </section>
     </header>
     

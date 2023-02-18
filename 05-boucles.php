@@ -15,6 +15,19 @@
             <p class="col-md-8 fs-4">
                 Les boucles ( que l'on appelle aussi structures itératives ) sont un moyen de faire se répéter plusieurs fois un morceau de code. Une boucle est donc une répétition, comme on a pu le voir en JavaScript.
             </p>
+
+            <nav class="navbar navbar-expand-lg bg-tertiary">
+                <a class="nav-link m-2" href="01-index.html">introduction</a>
+                <a class="nav-link m-2" href="03-variable.html">variables</a>
+                <a class="nav-link active m-2" aria-current="page" href="05-boucles.php">boucles</a>
+                <a class="nav-link m-2" href="06-array.php">array</a>
+                <a class="nav-link m-2" href="08-inclusion.php">inclusion</a>
+                <a class="nav-link m-2" href="09-get_post.php">Les superglobales</a>
+                <a class="nav-link m-2" href="10-pdo.php">Le PHP Data Object (PDO)</a>
+                <a class="nav-link m-2" href="session.php">Session de connection</a>
+                <a class="nav-link m-2" href="07-exercices.php">exercices</a>
+            </nav>
+
         </section>
     </header>
     <main class="container">
