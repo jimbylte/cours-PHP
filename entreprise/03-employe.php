@@ -51,6 +51,30 @@ else
         exit();
 }
 //Mise à jour des informations d'un employe
+// echo n"<pre>";
+// var_dump($_POST);
+// echo "</pre>";
+
+if(!empty($_POST)) // Je vérifie que mon formulaire n'est pas vide (not empty)
+{
+    $_POST['prenom'] = htmlspecialchars(($_POST['prenom']));
+    $_POST['nom'] = htmlspecialchars($_POST['nom']);
+
+    $resultat = $pdoEntreprise->prepare("UPDATE employes SET prenom = :prenom, nom = :nom, genre = :genre, service = :service, date_embauche = :date_embauche, salaire = :salaire WHERE id_employes = :id_employes");
+
+    $resultat->execute(array(
+        ':id_employes' => $_GET['id_employes'],
+        ':prenom' => $_POST['prenom'],
+        ':nom' => $_POST['nom'],
+        ':genre'> $_POST['genre'],
+        ':service' => $_POST['service'],
+        ':date_embauche' => $_POST['date_embauche'],
+        ':salaire' => $_POST['salaire'],
+    ));
+    header('location:02-employes.php');
+    exit();
+}
+
 ?>
 
 <!doctype html>
@@ -91,7 +115,7 @@ else
                         <p class="card-text">Service : <?php echo $ficheEmploye['service']; ?></p>
                         <p class="card-text">Salaire : <?php echo $ficheEmploye['salaire']; ?> €</p>
                         <p class="card-text">Genre : <?php
-                    if ($ficheEmploye['sexe'] == 'f') {
+                    if ($ficheEmploye['genre'] == 'f') {
                     echo "Femme";
                     } else {
                     echo "Homme";
@@ -148,7 +172,7 @@ else
                         <input type="number" name="salaire" id="salaire" class="form-control" value="<?php echo $ficheEmploye['salaire']; ?>">
                     </div>
 
-                    <input type="submit" class="btn btn-warning">
+                    <input type="submit" value="modifier" class="btn btn-warning">
                 </form>
             </div>
 

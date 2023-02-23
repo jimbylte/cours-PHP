@@ -61,7 +61,9 @@ $pdoEntreprise = new PDO(
                 </thead>
                 <tbody>
                 <?php
-                /*
+
+                echo "<pre>";
+                echo "<code>";
                     while($employes = $requete->fetch(PDO::FETCH_ASSOC)){
                         //FETCH_ASSOC est une méthode qui permet de récupérer les informations dans notre BDD en les liant par enregistrement
                         echo "<tr>";
@@ -73,7 +75,7 @@ $pdoEntreprise = new PDO(
                                                
                         //on fait une condition en PHP 
                         /* si le sexe est f dans la bdd alors je dis d'afficher femme sinon c'est forcément h et je demande d'afficher homme */
-                       /* if($employes['genre'] == 'f'){
+                        if($employes['genre'] == 'f'){
                             echo "Femme";
                         }else {
                             echo "Homme";
@@ -103,15 +105,62 @@ $pdoEntreprise = new PDO(
                     
                         echo "</tr>";
                     }
-                    */
-                    // $employes = $requete->fetchAll (PDO::FETCH_ASSOC)
+                    echo "</pre>";
+                    echo "</code>";
+                    
+
+                    while($employes = $requete->fetch(PDO::FETCH_ASSOC)){
+                        //FETCH_ASSOC est une méthode qui permet de récupérer les informations dans notre BDD en les liant par enregistrement
+                        echo "<tr>";
+                        echo "<td>". $employes['id_employes'] ."</td>"; // je récupère l'id qui correspond au premier enregistrement de ma requête
+                        echo "<td>". $employes['prenom'] ."</td>";
+                        echo "<td>". $employes['nom'] ."</td>";
+                        
+                        echo "<td>";
+                                               
+                        //on fait une condition en PHP 
+                        /* si le sexe est f dans la bdd alors je dis d'afficher femme sinon c'est forcément h et je demande d'afficher homme */
+                        if($employes['genre'] == 'f'){
+                            echo "Femme";
+                        }else {
+                            echo "Homme";
+                        }
+                                            
+                        echo "</td>";
+                        
+                        echo "<td>". $employes['service'] ."</td>";
+                        echo "<td>". date('d/m/y', strtotime($employes['date_embauche'])) ."</td>";
+                        // ici on utilise une fonction prédéfinie date(). Cette fonction PHP prend deux arguments : le format de la date, deuxième argument la date que l'on veut modifier. On peut préciser une date nous-même ou alors récupérer une date depuis la BDD. 
+                        echo "<td>". $employes['salaire'] ." €</td>";
+                    
+                        echo "<td>
+                        <a href='03-employe.php?id_employes=". $employes['id_employes'] ."' class='btn btn-primary mx-3'>
+                        
+                        Voir l'employé
+                        
+                        </a>
+
+                        <a href='02-employes.php?action=suppression&id_employes=' " . $employes['id_employes'] ." class='btn btn-danger mx-3' onclick='return(confirm(\"Êtes-vous sûr de vouloir supprimer cet employé ?\"))'>
+
+                        Supprimer l'employé
+
+                        </a>
+                        
+                        </td>";
+                    
+                        echo "</tr>";
+                    }
+                    // Pour un tableau multidimentionnel 
+
+                    echo "<pre>";
+                    echo "<code>";
                     $employes = $requete->fetchAll (PDO::FETCH_ASSOC);
 
                     
                     foreach($employes as $cle => $value){
-                        echo "<pre>";
-                        var_dump($employes);
-                        echo "</pre>";
+                        // echo "<pre>";
+                        // var_dump($employes);
+                        // echo "</pre>";
                         //FETCH_ASSOC est une méthode qui permet de récupérer les informations dans notre BDD en les liant par enregistrement
                         echo "<tr>";
                         echo "<td>". $value['id_employes'] ."</td>"; // je récupère l'id qui correspond au premier enregistrement de ma requête
@@ -152,7 +201,48 @@ $pdoEntreprise = new PDO(
                     
                         echo "</tr>";
                     }
-                    
+                    echo "</code>";
+                    echo "</pre>";
+
+
+                    //pour un tableau avec deux foreach, l'une pour le tableau multidimentionnel et l'autre pour le tableau associatif
+                    $employes = $requete->fetchAll(PDO::FETCH_ASSOC);
+
+                        foreach($employes as $index => $employe){
+
+                            echo "<tr>";
+
+                            foreach($employe as $cle => $donneesEmploye){
+                                if($cle == 'genre'){
+                                    if($donneesEmploye == 'f'){
+                                        echo "<td>Femme</td>";
+                                    }else{
+                                        echo "<td>Homme</td>";
+                                    }     
+                                }elseif($cle == 'date_embauche'){
+                                    echo "<td>".date('d/m/y', strtotime($donneesEmploye))."</td>";
+                                }else{
+                                    echo"<td>$donneesEmploye</td>";
+                                }
+                            }
+                            echo "<td>
+                        
+                            <a href='03-employe.php?id_employes=". $employe['id_employes'] ."' class='btn btn-primary mx-3'>
+                                
+                             Voir l'employé
+                                
+                            </a>
+        
+                            <a href='02-employes.php?action=suppression&id_employes=" . $employe['id_employes'] ."' class='btn btn-danger mx-3' onclick='return(confirm('Êtes-vous sûr de vouloir supprimer cet employé ?'))'>
+        
+                            Supprimer l'employé
+        
+                            </a>
+                                
+                                </td>";
+                            echo "</tr>";
+
+                        }
                     ?>
                 </tbody>
         
