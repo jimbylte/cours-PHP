@@ -61,6 +61,7 @@ $pdoEntreprise = new PDO(
                 </thead>
                 <tbody>
                 <?php
+                /*
                     while($employes = $requete->fetch(PDO::FETCH_ASSOC)){
                         //FETCH_ASSOC est une méthode qui permet de récupérer les informations dans notre BDD en les liant par enregistrement
                         echo "<tr>";
@@ -72,7 +73,7 @@ $pdoEntreprise = new PDO(
                                                
                         //on fait une condition en PHP 
                         /* si le sexe est f dans la bdd alors je dis d'afficher femme sinon c'est forcément h et je demande d'afficher homme */
-                        if($employes['sexe'] == 'f'){
+                       /* if($employes['genre'] == 'f'){
                             echo "Femme";
                         }else {
                             echo "Homme";
@@ -102,6 +103,56 @@ $pdoEntreprise = new PDO(
                     
                         echo "</tr>";
                     }
+                    */
+                    // $employes = $requete->fetchAll (PDO::FETCH_ASSOC)
+                    $employes = $requete->fetchAll (PDO::FETCH_ASSOC);
+
+                    
+                    foreach($employes as $cle => $value){
+                        echo "<pre>";
+                        var_dump($employes);
+                        echo "</pre>";
+                        //FETCH_ASSOC est une méthode qui permet de récupérer les informations dans notre BDD en les liant par enregistrement
+                        echo "<tr>";
+                        echo "<td>". $value['id_employes'] ."</td>"; // je récupère l'id qui correspond au premier enregistrement de ma requête
+                        echo "<td>". $value['prenom'] ."</td>";
+                        echo "<td>". $value['nom'] ."</td>";
+                        
+                        echo "<td>";
+                                               
+                        //on fait une condition en PHP 
+                        /* si le sexe est f dans la bdd alors je dis d'afficher femme sinon c'est forcément h et je demande d'afficher homme */
+                        if($value['genre'] == 'f'){
+                            echo "Femme";
+                        }else {
+                            echo "Homme";
+                        }
+                                            
+                        echo "</td>";
+                        
+                        echo "<td>". $value['service'] ."</td>";
+                        echo "<td>". date('d/m/y', strtotime($value['date_embauche'])) ."</td>";
+                        // ici on utilise une fonction prédéfinie date(). Cette fonction PHP prend deux arguments : le format de la date, deuxième argument la date que l'on veut modifier. On peut préciser une date nous-même ou alors récupérer une date depuis la BDD. 
+                        echo "<td>". $value['salaire'] ." €</td>";
+                    
+                        echo "<td>
+                        <a href='03-employe.php?id_employes=". $value['id_employes'] ."' class='btn btn-primary mx-3'>
+                        
+                        Voir l'employé
+                        
+                        </a>
+
+                        <a href='02-employes.php?action=suppression&id_employes=' " . $value['id_employes'] ." class='btn btn-danger mx-3' onclick='return(confirm(\"Êtes-vous sûr de vouloir supprimer cet employé ?\"))'>
+
+                        Supprimer l'employé
+
+                        </a>
+                        
+                        </td>";
+                    
+                        echo "</tr>";
+                    }
+                    
                     ?>
                 </tbody>
         
