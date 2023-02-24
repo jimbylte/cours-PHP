@@ -105,7 +105,7 @@ if(!empty($_POST)) // Je vérifie que mon formulaire n'est pas vide (not empty)
     </header><!-- fin du jumbotron -->
 
     <main class="container">
-        <section class="row my-5">
+        <!-- <section class="row my-5">
 
             <div class="col-12 col-md-6">
                 <div class="card">
@@ -131,8 +131,8 @@ if(!empty($_POST)) // Je vérifie que mon formulaire n'est pas vide (not empty)
                     </div>
                     <input type="submit" value="modifier" class="btn btn-warning">
                 </div>
-            </div>
-        
+            </div> -->
+        <section>
             <div class="col-12 col-md-6">
                 <form action="#" method="POST" class="border p-2 bg-light">
 
@@ -174,7 +174,7 @@ if(!empty($_POST)) // Je vérifie que mon formulaire n'est pas vide (not empty)
                         <input type="number" name="salaire" id="salaire" class="form-control" value="<?php echo $ficheEmploye['salaire']; ?>">
                     </div>
 
-                    <input type="submit" value="modifier" class="btn btn-warning">
+                    <input type="submit" value="valider" class="btn btn-warning">
                 </form>
             </div>
 

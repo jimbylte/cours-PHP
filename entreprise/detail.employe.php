@@ -129,24 +129,25 @@ if(!empty($_POST)) // Je vérifie que mon formulaire n'est pas vide (not empty)
                                                 ?></p>
 
                     </div>
-                    <input type="submit" value="modifier" class="btn btn-warning">
+                    
                 </div>
             </div>
-        
-            <div class="col-12 col-md-6">
+        </section>
+        <section>
+           <!-- <div class="col-12 col-md-6">
                 <form action="#" method="POST" class="border p-2 bg-light">
 
                     <div class="mb-3">
                         <label for="prenom">Prénom de l'employé</label>
                         <input type="text" name="prenom" id="prenom" class="form-control" value="<?php echo $ficheEmploye['prenom']; ?>">
-                    </div><!-- fin prénom -->
+                    </div> fin prénom
 
-                    <div class="mb-3">
+                 <div class="mb-3">
                         <label for="nom">Nom de l'employé</label>
                         <input type="text" name="nom" id="nom" class="form-control" value="<?php echo $ficheEmploye['nom']; ?>">
-                    </div><!-- fin nom -->
+                    </div>fin nom -->
 
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <label for="sexe">Genre de l'employé</label>
                         <select name="sexe" id="sexe" class="form-select">
                             <option value="f">Femme</option>
@@ -158,13 +159,13 @@ if(!empty($_POST)) // Je vérifie que mon formulaire n'est pas vide (not empty)
                         <label for="service">Service de l'employé</label>
                         <select name="service" id="service" class="form-select">
                             <?php // je récupère les services depuis la BDD
-                            $requeteService = $pdoEntreprise->query("SELECT DISTINCT service FROM employes");
-                            // ma requête qui va cherher tous les services depuis ma BDD
+                            // $requeteService = $pdoEntreprise->query("SELECT DISTINCT service FROM employes");
+                            // // ma requête qui va cherher tous les services depuis ma BDD
 
-                            while ($service = $requeteService->fetch(PDO::FETCH_ASSOC)) {
-                                echo "<option value=\"" . $service['service'] . "\">" . $service['service'] . "</option>";
+                            // while ($service = $requeteService->fetch(PDO::FETCH_ASSOC)) {
+                            //     echo "<option value=\"" . $service['service'] . "\">" . $service['service'] . "</option>";
                                 // je demande l'affichage de chacun des services sous forme de <option>
-                            }
+                            // }
                             ?>
                         </select>
                     </div>
@@ -176,7 +177,7 @@ if(!empty($_POST)) // Je vérifie que mon formulaire n'est pas vide (not empty)
 
                     <input type="submit" value="modifier" class="btn btn-warning">
                 </form>
-            </div>
+            </div> -->
 
         </section>
     </main>

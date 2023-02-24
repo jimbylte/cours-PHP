@@ -63,8 +63,7 @@ include_once ("inc/fonctions.inc.php"); //le code de connection est inséré dan
                 <tbody>
                 <?php
 
-                echo "<pre>";
-                echo "<code>";
+                
                     while($employes = $requete->fetch(PDO::FETCH_ASSOC)){
                         //FETCH_ASSOC est une méthode qui permet de récupérer les informations dans notre BDD en les liant par enregistrement
                         echo "<tr>";
@@ -90,15 +89,21 @@ include_once ("inc/fonctions.inc.php"); //le code de connection est inséré dan
                         echo "<td>". $employes['salaire'] ." €</td>";
                     
                         echo "<td>
-                        <a href='03-employe.php?id_employes=". $employes['id_employes'] ."' class='btn btn-primary mx-3'>
+                        <a href='detail.employe.php?id_employes=". $employes['id_employes'] ."' class='btn btn-primary mx-3'>
                         
                         Voir l'employé
                         
                         </a>
 
+                        <a href='detail.employe.php?id_employes=". $employes['id_employes'] ."' class='btn btn-warning mx-3'>
+                        
+                        Modifier
+                        
+                        </a>
+
                         <a href='02-employes.php?action=suppression&id_employes=' " . $employes['id_employes'] ." class='btn btn-danger mx-3' onclick='return(confirm(\"Êtes-vous sûr de vouloir supprimer cet employé ?\"))'>
 
-                        Supprimer l'employé
+                        Supprimer
 
                         </a>
                         
@@ -106,8 +111,7 @@ include_once ("inc/fonctions.inc.php"); //le code de connection est inséré dan
                     
                         echo "</tr>";
                     }
-                    echo "</pre>";
-                    echo "</code>";
+                    
                     
 
                     while($employes = $requete->fetch(PDO::FETCH_ASSOC)){
@@ -135,9 +139,14 @@ include_once ("inc/fonctions.inc.php"); //le code de connection est inséré dan
                         echo "<td>". $employes['salaire'] ." €</td>";
                     
                         echo "<td>
-                        <a href='03-employe.php?id_employes=". $employes['id_employes'] ."' class='btn btn-primary mx-3'>
+                        <a href='detail.employe.php?id_employes=". $employes['id_employes'] ."' class='btn btn-primary mx-3'>
                         
                         Voir l'employé
+                        
+                        </a>
+                        <a href='modification.employe.php?action=modification&id_employes=". $employes['id_employes'] ."' class='btn btn-warning mx-3'>
+                        
+                        Modifier employé
                         
                         </a>
 
@@ -186,7 +195,7 @@ include_once ("inc/fonctions.inc.php"); //le code de connection est inséré dan
                         echo "<td>". $value['salaire'] ." €</td>";
                     
                         echo "<td>
-                        <a href='03-employe.php?id_employes=". $value['id_employes'] ."' class='btn btn-primary mx-3'>
+                        <a href='detail.employe.php?id_employes=". $value['id_employes'] ."' class='btn btn-primary mx-3'>
                         
                         Voir l'employé
                         
@@ -228,7 +237,7 @@ include_once ("inc/fonctions.inc.php"); //le code de connection est inséré dan
                             }
                             echo "<td>
                         
-                            <a href='03-employe.php?id_employes=". $employe['id_employes'] ."' class='btn btn-primary mx-3'>
+                            <a href='detail.employe.php?id_employes=". $employe['id_employes'] ."' class='btn btn-primary mx-3'>
                                 
                              Voir l'employé
                                 
