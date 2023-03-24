@@ -10,7 +10,7 @@
 //         PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
 //     )
 // );
-include_once ("inc/fonctions.inc.php"); //le code de connection est inséré dans la page grâce à "include_once"
+include_once ("inc/init.inc.php"); //le code de connection est inséré dans la page grâce à "include_once"
 
 ?>
 

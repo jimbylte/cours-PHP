@@ -14,16 +14,16 @@ C'est-à-dire qu'à chaque fois que votre page devra contenir du langage php vou
     * le mdp ('')
 */
 // 4 - le tableau (array) sert ici à gérer les erreurs de connexion ou de requête à la BDD. S'il y a une erreur, alors un texte explicatif sera affiché sur la page du navigateur.
-// $pdoEntreprise = new PDO(
-//     'mysql:host=localhost;
-//     dbname=entreprise', 
-//     'root',
-//     '',
-//     array(
-//         PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,
-//         PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
-//     )
-// );
+$pdoEntreprise = new PDO(
+    'mysql:host=localhost;
+    dbname=entreprise', 
+    'root',
+    '',
+    array(
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,
+        PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+    )
+);
 include_once ("inc/fonctions.inc.php"); //le code de connection est inséré dans la page grâce à "include_once"
 
 ?>

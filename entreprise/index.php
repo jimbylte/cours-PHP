@@ -5,26 +5,7 @@ C'est-à-dire qu'à chaque fois que votre page devra contenir du langage php vou
 -->
 
 <?php
-// ma première connexion à la BDD
-// 1 - en php pour créer une variable j'utilise le signe $ suivi du nom de ma variable
-// 2 - PDO => php data object et ça permet de créer (quand il y a la bonnes informations de connexion) une connexion avec la BDD
-/* 3 - lorsque j'utilise le mot clé 'new' je crée un objet de la connexion à la BDD qui attendra plusieurs informations :
-    * les informations sur mon serveur (ici localhost) et sur le nom de la BDD (entreprise)
-    * le nom d'utilisateur ('root')
-    * le mdp ('')
-*/
-// 4 - le tableau (array) sert ici à gérer les erreurs de connexion ou de requête à la BDD. S'il y a une erreur, alors un texte explicatif sera affiché sur la page du navigateur.
-// $pdoEntreprise = new PDO(
-//     'mysql:host=localhost;
-//     dbname=entreprise', 
-//     'root',
-//     '',
-//     array(
-//         PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,
-//         PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
-//     )
-// );
-include_once ("inc/fonctions.inc.php"); //le code de connection est inséré dans la page grâce à "include_once"
+require_once('inc/init.inc.php');
 
 ?>
 
@@ -76,6 +57,9 @@ include_once ("inc/fonctions.inc.php"); //le code de connection est inséré dan
                 <tbody>
                     <?php
                     while($employes = $requete->fetch(PDO::FETCH_ASSOC)){
+
+                        debug($employes);
+
                         //FETCH_ASSOC est une méthode qui permet de récupérer les informations dans notre BDD en les liant par enregistrement
                         echo "<tr>";
                         echo "<td>". $employes['id_employes'] ."</td>"; // je récupère l'id qui correspond au premier enregistrement de ma requête
