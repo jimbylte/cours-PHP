@@ -10,13 +10,13 @@
                     <a class="nav-link" href="index.php">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="articles.php">Articles</a>
+                    <a class="nav-link" href="articles.php">Ajouts</a>
                 </li>
 
                 
 
                 <li class="nav-item">
-                    <a class="nav-link" href="inscription.php">Inscription</a>
+                    <a class="nav-link" href="inscription.php">Toutes les annonces</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="connexion.php">Connexion</a>
